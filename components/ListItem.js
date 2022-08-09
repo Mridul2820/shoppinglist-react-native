@@ -2,12 +2,17 @@ import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-const ListItem = ({item}) => {
+const ListItem = ({item, deleteItem}) => {
   return (
     <TouchableOpacity style={styles.listitem}>
       <View style={styles.listitemview}>
         <Text style={styles.listitemtext}>{item.text}</Text>
-        <Icon name="delete" size={20} color="firebrick" />
+        <Icon
+          name="delete"
+          size={20}
+          color="firebrick"
+          onPress={() => deleteItem(item.id)}
+        />
       </View>
     </TouchableOpacity>
   );
