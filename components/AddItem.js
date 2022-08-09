@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,11 +8,23 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-const AddItem = () => {
+const AddItem = ({addItem}) => {
+  const [text, setText] = useState('');
+
   return (
     <View>
-      <TextInput placeholder="Add Item" style={styles.input} />
-      <TouchableOpacity style={styles.btn}>
+      <TextInput
+        placeholder="Add Item"
+        style={styles.input}
+        value={text}
+        onChangeText={text => setText(text)}
+      />
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => {
+          addItem(text);
+          setText('');
+        }}>
         <Text style={styles.btntext}>
           Add Item <Icon name="plus" size={20} />
         </Text>
